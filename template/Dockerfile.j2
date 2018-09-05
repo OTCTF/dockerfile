@@ -6,6 +6,8 @@
   FROM ubuntu:18.04
 {% elif base is equalto 'sagemath' %}
   FROM sagemath/sagemath
+{% elif base is equalto 'keras' %}
+  FROM gw000/keras
 {% else %}
   {% raise "unknown base" %}
 {% endif %}
