@@ -1,5 +1,5 @@
 
-  FROM ubuntu:18.04
+  FROM sagemath/sagemath
 
 
 MAINTAINER ot-oldman <otctfmail@gmail.com>

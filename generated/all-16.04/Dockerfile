@@ -5,6 +5,7 @@
 MAINTAINER ot-oldman <otctfmail@gmail.com>
 
 # basic
+RUN mkdir -p /home/tools
 RUN dpkg --add-architecture i386
 RUN apt-get update
 ## common binary
@@ -26,8 +27,6 @@ RUN pip3 install -U setuptools
 RUN apt-get install -y nmap
 RUN pip install flask
 ## flask session cookie manager
-### TODO: move to beginning
-RUN mkdir -p /home/tools
 RUN wget https://raw.githubusercontent.com/noraj/flask-session-cookie-manager/master/session_cookie_manager.py -O /home/tools/flask_session_cookie_manager.py
 
 

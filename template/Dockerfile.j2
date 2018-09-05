@@ -1,11 +1,13 @@
-{% if os is equalto '14.04' %}
+{% if base is equalto 'ubuntu-14.04' %}
   FROM ubuntu:14.04
-{% elif os is equalto '16.04' %}
+{% elif base is equalto 'ubuntu-16.04' %}
   FROM ubuntu:16.04
-{% elif os is equalto '18.04' %}
+{% elif base is equalto 'ubuntu-18.04' %}
   FROM ubuntu:18.04
+{% elif base is equalto 'sagemath' %}
+  FROM sagemath/sagemath
 {% else %}
-  {% raise "unknown os version" %}
+  {% raise "unknown base" %}
 {% endif %}
 
 MAINTAINER ot-oldman <otctfmail@gmail.com>
