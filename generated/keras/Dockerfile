@@ -1,5 +1,5 @@
 
-  FROM ubuntu:14.04
+  FROM gw000/keras
 
 
 MAINTAINER ot-oldman <otctfmail@gmail.com>
@@ -30,15 +30,6 @@ RUN pip install flask
 ## flask session cookie manager
 RUN wget https://raw.githubusercontent.com/noraj/flask-session-cookie-manager/master/session_cookie_manager.py -O /home/tools/flask_session_cookie_manager.py
 
-  RUN apt-get install -y php5-common php5-cli php5-mysql php5-curl php5-fpm
-  ## phpsh
-  RUN git clone --depth=1 https://github.com/facebookarchive/phpsh.git /tmp/phpsh \
-        && cd /tmp/phpsh \
-        && python setup.py build \
-        && python setup.py install \
-        && cd /home \
-        && rm -rf /tmp/phpsh
-
 
 # crypto related
 RUN apt-get install -y libgmp3-dev libecm-dev gmp-ecm
@@ -67,6 +58,10 @@ RUN apt-get install -y libffi-dev qemu libstdc++6-armhf-cross
 RUN pip install capstone enum34 ipaddress cryptography pwntools uncompyle2
 RUN pip3 install capstone enum34 ipaddress cryptography pwntools
 
+  RUN gem install one_gadget
+
+
+  RUN gem install seccomp-tools
 
 ## gdb-peda and Pwngdb
 RUN git clone --depth=1 https://github.com/longld/peda.git /home/tools/peda \
@@ -78,6 +73,8 @@ RUN git clone --depth=1 https://github.com/longld/peda.git /home/tools/peda \
 
 # misc related
 RUN apt-get install -y outguess python-pil sleuthkit
+
+  RUN gem install zsteg
 
 ## binwalk
 RUN git clone --depth=1 https://github.com/ReFirmLabs/binwalk.git /tmp/binwalk \
