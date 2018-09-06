@@ -18,4 +18,6 @@
 - `all-18.04`
 	- 提供基于 `ubuntu-18.04` 的通用环境
 - `sagemath`
-	- 提供基于 `sagemath/sagemath` 的通用环境，其基于 `ubuntu-16.04`
+	- 提供基于 [`sagemath/sagemath`](https://hub.docker.com/r/sagemath/sagemath/) 的通用环境，其基于 `ubuntu-16.04`
+- `keras`
+  - 提供基于 [`gw000/keras`](https://hub.docker.com/r/gw000/keras/) 的通用环境，其基于 `debain 9.3`
