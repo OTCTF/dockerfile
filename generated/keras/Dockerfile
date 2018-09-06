@@ -54,12 +54,12 @@ RUN git clone --depth=1 https://github.com/zweisamkeit/RSHack.git /home/tools/rs
 
 # reverse and pwn related
 RUN apt-get install -y libffi-dev qemu libstdc++6-armhf-cross
-RUN pip3 install capstone enum34 ipaddress cryptography
-RUN pip3 install git+https://github.com/arthaud/python3-pwntools.git
 ### uncompyle2 only support python2.7
 RUN pip install capstone enum34 ipaddress cryptography pwntools uncompyle2
 ### TODO: this is a workaround to new version of elftools, please remove it when the issue is offically closed: https://github.com/Gallopsled/pwntools/issues/1189
 RUN sed -i 's!ENUM_P_TYPE!ENUM_P_TYPE_BASE!' /usr/local/lib/python2.7/dist-packages/pwnlib/elf/elf.py
+RUN pip3 install capstone enum34 ipaddress cryptography
+RUN pip3 install git+https://github.com/arthaud/python3-pwntools.git
 
   RUN gem install one_gadget
 
