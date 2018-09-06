@@ -15,7 +15,7 @@ RUN apt-get install -y apt-file vim git unzip net-tools openssl netcat telnet cu
 RUN apt-get install -y autoconf autotools-dev build-essential gcc-multilib g++ software-properties-common gdb libc6-dbg:i386
 RUN apt-get install -y python2.7 python2.7-dev python-pip
 RUN apt-get install -y python3 python3-dev python3-pip
-RUN apt-get install -y nodejs npm
+
 RUN apt-get install -y ruby ruby-dev
 RUN apt-get install -y default-jdk
 ## python common libary
@@ -55,8 +55,9 @@ RUN git clone --depth=1 https://github.com/zweisamkeit/RSHack.git /home/tools/rs
 # reverse and pwn related
 RUN apt-get install -y libffi-dev qemu libstdc++6-armhf-cross
 ### uncompyle2 only support python2.7
+RUN pip3 install capstone enum34 ipaddress cryptography
+RUN pip3 install git+https://github.com/arthaud/python3-pwntools.git
 RUN pip install capstone enum34 ipaddress cryptography pwntools uncompyle2
-RUN pip3 install capstone enum34 ipaddress cryptography pwntools
 
   RUN gem install one_gadget
 

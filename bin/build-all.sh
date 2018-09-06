@@ -14,5 +14,5 @@ $THIS_DIR/../src/main.py --template Dockerfile.j2 --name all-18.04 --params base
 # segamath version，which is based on ubuntu-16.04
 $THIS_DIR/../src/main.py --template Dockerfile.j2 --name sagemath --params base=sagemath ignore_php5=1
 
-# keras version, based on Debain 9.3
-$THIS_DIR/../src/main.py --template Dockerfile.j2 --name keras --params base=keras ignore_php5=1
+# keras version, based on Debain 9.3, which doesn't contains node
+$THIS_DIR/../src/main.py --template Dockerfile.j2 --name keras --params base=keras ignore_php5=1 ignore_nodejs=1
