@@ -11,6 +11,7 @@ RUN dpkg --add-architecture i386
 RUN apt-get update
 ## common binary
 RUN apt-get install -y apt-file vim git unzip net-tools openssl netcat telnet curl wget man-db socat tmux nginx ascii p7zip-full
+RUN apt-file update
 ## language: c/c++ python node.js ruby java
 RUN apt-get install -y autoconf autotools-dev build-essential gcc-multilib g++ software-properties-common gdb libc6-dbg:i386
 RUN apt-get install -y python2.7 python2.7-dev python-pip
@@ -90,3 +91,9 @@ RUN git clone --depth=1 https://github.com/ReFirmLabs/binwalk.git /tmp/binwalk \
       && python setup.py install \
       && cd /home \
       && rm -rf /tmp/binwalk
+## xortool
+RUN git clone --depth=1 https://github.com/hellman/xortool.git /tmp/xortool \
+      && cd /tmp/xortool \
+      && python setup.py install \
+      && cd /home \
+      && rm -rf /tmp/xortool
