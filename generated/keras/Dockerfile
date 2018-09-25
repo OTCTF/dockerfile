@@ -76,10 +76,19 @@ RUN git clone --depth=1 https://github.com/longld/peda.git /home/tools/peda \
       && sed -i 's!~/!/home/tools/!' ~/.gdbinit
 
 # misc related
-RUN apt-get install -y outguess python-pil sleuthkit
+RUN apt-get install -y outguess sleuthkit
+## PIL
+RUN pip install pillow
+RUN pip3 install pillow
+## some steg tools
 
   RUN gem install zsteg
 
+RUN git clone --depth=1 https://github.com/bannsec/stegoVeritas.git /home/tools/stegoVeritas \
+      && rm -rf /home/tools/stegoVeritas/.git \
+      && echo 'python3 ./stegoveritas.py $@' > /home/tools/stegoVeritas/stegoveritas.sh \
+      && chmod a+x /home/tools/stegoVeritas/stegoveritas.sh \
+      && ln -s /home/tools/stegoVeritas/stegoveritas.sh /usr/local/bin/stegoveritas
 ## binwalk
 RUN git clone --depth=1 https://github.com/ReFirmLabs/binwalk.git /tmp/binwalk \
       && cd /tmp/binwalk \
