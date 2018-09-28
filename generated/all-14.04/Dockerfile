@@ -42,6 +42,13 @@ RUN wget https://raw.githubusercontent.com/noraj/flask-session-cookie-manager/ma
         && cd /home \
         && rm -rf /tmp/phpsh
 
+## subdomain brute attack
+RUN pip install dnspython gevent
+RUN git clone --depth=1 https://github.com/lijiejie/subDomainsBrute.git /home/tools/subDomainsBrute \
+      && rm -rf /home/tools/subDomainsBrute/.git \
+      && echo 'python /home/tools/subDomainsBrute/subDomainsBrute.py $@' > /home/tools/subDomainsBrute/subDomainsBrute.sh \
+      && chmod a+x /home/tools/subDomainsBrute/subDomainsBrute.sh \
+      && ln -s /home/tools/subDomainsBrute/subDomainsBrute.sh /usr/local/bin/subDomainsBrute
 
 # crypto related
 RUN apt-get install -y libgmp3-dev libecm-dev gmp-ecm
@@ -91,7 +98,7 @@ RUN pip3 install pillow
 
 RUN git clone --depth=1 https://github.com/bannsec/stegoVeritas.git /home/tools/stegoVeritas \
       && rm -rf /home/tools/stegoVeritas/.git \
-      && echo 'python3 ./stegoveritas.py $@' > /home/tools/stegoVeritas/stegoveritas.sh \
+      && echo 'python3 /home/tools/stegoVeritas/stegoveritas.py $@' > /home/tools/stegoVeritas/stegoveritas.sh \
       && chmod a+x /home/tools/stegoVeritas/stegoveritas.sh \
       && ln -s /home/tools/stegoVeritas/stegoveritas.sh /usr/local/bin/stegoveritas
 ## binwalk
